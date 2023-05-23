@@ -1,0 +1,2 @@
+# Write a program in a programming language of your choice, that given a text T outputs the LZ77 encoding and the LZss encoding of the text.
+# A paramter of the program should be W, the length of the search buffer.

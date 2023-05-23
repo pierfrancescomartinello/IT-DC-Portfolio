@@ -1,0 +1,2 @@
+# Write a program in a programming language of your choice that, given a string T, construct the grammar produced by the algorithm RE-PAIR.
+# Implement also the construction of the grammar in the Chomsky normal form. Compute also the size of the grammar in both cases.
