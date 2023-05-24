@@ -1,36 +1,4 @@
-
-class PriorityQueue():
-    def __init__(self):
-        self.queue = []
-
-    def __str___(self):
-        return ' '.join(str(i) for i in self.queue)
-
-    def isEmpty(self):
-        return len(self.queue()) == 0
-
-    def insert(self, data):
-        self.queue.append(data)
-
-    def remove_min(self):
-            try:
-                min_index = 0
-                for i in self.queue:
-                    if i[1] < (self.queue[min_index])[1]:
-                        min_index= i
-                item = self.queue[i]
-                del self.queue[i]
-                return item
-            except IndexError:
-                print()
-                exit()
-
-    def len(self):
-        count = 0
-        for i in self.queue:
-            count += 1
-        return count
-
+import classes_library
 
 def parsing(text):
     counting = {}
@@ -81,7 +49,7 @@ while queue.len() != 1:
     (k2,v2) = queue.remove_min()
     queue.insert(k1.append(k2), v1+v2)
 
-(queue, probability_value) = queue.remove_min()
+(queue, probability_value) = queue.remove_min()     
 
 encoding = encoding(queue, parsed_text.keys())
 
