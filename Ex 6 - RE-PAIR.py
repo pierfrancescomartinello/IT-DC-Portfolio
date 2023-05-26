@@ -33,3 +33,17 @@ class RE_PAIRQueue(PriorityQueue):
             except IndexError:
                 print()
                 exit()
+
+
+def RE_PAIR(axiom):
+    pass
+
+def main():
+    print("What is the code?")
+    code = input()
+    RE_PAIR(axiom = code)
+    pass
+
+if __name__==__main__:
+    main()
+    pass
