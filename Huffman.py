@@ -1,5 +1,7 @@
 import classes_library
 
+
+
 def parsing(text):
     counting = {}
     for i in text:
@@ -8,6 +10,7 @@ def parsing(text):
         else:
             counting[i] += 1
     return counting
+
 
 
 def encoding(queue, characters):

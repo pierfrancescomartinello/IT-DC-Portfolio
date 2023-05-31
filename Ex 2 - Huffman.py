@@ -3,29 +3,6 @@
 
 import classes_library
 
-class HuffmanQueue(PriorityQueue):
-    
-    def k_split(k, code_lenght):
-        splits = ()
-        current_split = []
-        current_count = 0
-        for i in self.queue():
-            # We decide to split
-            if int(k/code_lenght) - current_count < current_count + i.value() - int(k/code_lenght):
-                splits.append(current_split)
-                current_split = []
-                current_count = 0
-                pass
-            else: # We decide to read another value
-                current_split.append(i)
-                current_count += i.value
-                pass
-            pass
-        
-        pass
-    return splits
-    pass
-
 
 def parsing(text):
     queue = PriorityQueue()
@@ -40,7 +17,85 @@ def parsing(text):
         queue.insert((k,v))
     return queue
 
+def huffman(queue):
+    dictionary = {}
 
+    while queue.len() != 1:
+        (k1,v1) = queue.remove_min()
+        if type(k1) != list:
+            dictionary[k1] = "0"
+        else:
+            for i in k1:
+                dictionary[i] = "0" + dictionary[i]
+            pass
+
+        (k2,v2) = queue.remove_min()
+        if type(k2) != list:
+            dictionary[k2] = "1"
+        else:
+            for i in k2:
+                dictionary[i] = "1" + dictionary[i]
+            pass
+
+
+        if type(k1) != list and type(k2) != list:
+            queue.append(([k1,k2], v1+v2))
+        elif type(k1) == list:
+            queue.append((k1.append(k2), v1+v2))
+        else:
+            queue.append((k2.append(k2), v1+v2))
+        
+    
+    return dictionary
+
+def tree_linearization(code, characters):
+    encoding = {}
+    value = ''
+    for i in code:
+        if i == '(':
+            value.append('0')
+        elif i == ';':
+            value = value[:-1]
+            value.append('1')
+        elif i == ')':
+            value = value[:-1]
+        else:
+            encoding[i] = value
+        pass
+    return encoding
+
+# My implementation of the Huffman encoding,
+# using a string to represent all the 
+def my_huffman(queue):
+    while queue.len() != 1:
+        (k1,v1) = queue.remove_min()
+
+        (k2,v2) = queue.remove_min()
+        
+        queue.add("({}, {})".format(k1,k2))
+    (k, v) = queue.remove_min()
+    return k
+    
+def encoding(text, encoding):
+    coding = ""
+    for elem in text:
+        coding += encoding[elem]
+    return coding
+
+
+def decoding(coded_text, encoding):
+    encoding_transpost = {v: k for k,v in encoding.items()}
+    temp_value = ""
+    decoding = ""
+    for i in coded_text:
+        temp_value += i
+        if temp_value in encoding_transpost.keys():
+            decoding += encoding_transpost[temp_value]
+            temp_value = ""
+
+    return decoding
+
+    
 def main():
     print("Write the text, ENTER to finish")
     text = input()
