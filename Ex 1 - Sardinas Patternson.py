@@ -79,4 +79,4 @@ if __name__ == "__main__":
         C = input("\n\tPlease input the words divided by a space\n\t").split()
         sardinas_patterson(C)
     print("Exiting...")
-    pass
+    exit()
