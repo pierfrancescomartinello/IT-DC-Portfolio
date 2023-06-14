@@ -77,6 +77,6 @@ if __name__ == "__main__":
 
     while input("Want to check another code? [Y/n]  ") in ("Y", "y"):
         C = input("\n\tPlease input the words divided by a space\n\t").split()
-        sardinas_patterson(C)
+        sardinas_patterson(C) if len(C) != 0 else print("You have not entered a valide code")
     print("Exiting...")
     exit()
