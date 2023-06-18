@@ -2,14 +2,7 @@ import classes_library
 
 
 
-def parsing(text):
-    counting = {}
-    for i in text:
-        if i not in counting:
-            counting[i] = 1
-        else:
-            counting[i] += 1
-    return counting
+
 
 
 
@@ -33,7 +26,7 @@ def encoding(queue, characters):
 print("Write the text, ENTER to finish")
 text = input()
 queue = PriorityQueue()
-parsed_text = parsing(text)
+parsed_text = probability_reading(text)
 code = ''
 
 print(parsed_text)

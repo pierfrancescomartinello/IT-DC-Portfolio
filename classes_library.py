@@ -16,17 +16,20 @@ class PriorityQueue():
     def insert(self, data):
         self.queue.append(data)
 
+    def values(self):
+        return [i[1] for i in self.queue]
+        
     # Remove the first minimum found in the queue
     def remove_min(self):
             try:
                 min_index = 0
                 # This search analyze the whole queue for the minimum value. 
                 # The order relation is given by the second element of each entry
-                for i in self.queue:
-                    if i[1] < (self.queue[min_index])[1]:
-                        min_index = i
-                item = self.queue[i]
-                del self.queue[i]
+                for index, i in enumerate(self.queue):
+                    if i[1] < self.queue[min_index][1]:
+                        min_index = index
+                item = self.queue[min_index]
+                del self.queue[min_index]
                 return item
             except IndexError:
                 print()
@@ -38,3 +41,20 @@ class PriorityQueue():
         for i in self.queue:
             count += 1
         return count
+
+def probability_reading(text):
+    counting = {}
+    for i in text:
+        if i not in counting:
+            counting[i] = 1
+        else:
+            counting[i] += 1
+    return counting
+
+
+
+def kmm(d, lengths):
+    sum = 0 
+    for l in lengths:
+        sum += pow(d, -l)
+    return sum if (sum <= 1) else -1
