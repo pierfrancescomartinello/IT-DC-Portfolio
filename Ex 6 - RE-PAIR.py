@@ -8,6 +8,11 @@ class RE_PAIRQueue(classes_library.PriorityQueue):
     def update(self, key, value):
         self.queue = [(k,v) if k != key else (key, value) for (k,v) in self.queue]
 
+    # Return the couple (i,k) if it is in the queue
+    def search(self, i):
+        for k,v in self.queue:
+            if k == i: return (k,v)
+            
     def insert(self, data):
         k,v = self.search(data[0])
         print(type(k))
@@ -16,10 +21,7 @@ class RE_PAIRQueue(classes_library.PriorityQueue):
         else:
             self.queue.append(data)
 
-    # Return the couple (i,k) if it is in the queue
-    def search(self, i):
-        for k,v in self.queue:
-            if k == i: return (k,v)
+
 
     #Removes the first maximum in the queue
     def remove_max(self):
